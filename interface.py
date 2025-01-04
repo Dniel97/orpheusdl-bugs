@@ -242,6 +242,9 @@ class ModuleInterface:
         release_year = album_data.get('release_ymd')[:4] if album_data.get('release_ymd') else None
 
         release_date = album_data.get('release_ymd') if album_data.get('release_ymd') else None
+        # add a month if the month is missing from the YYYY date
+        if len(release_date) == 4:
+            release_date += '01'
         # add a day if the day is missing from the YYYYMM date
         if len(release_date) == 6:
             release_date += '01'
